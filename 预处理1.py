@@ -4,7 +4,7 @@ import time
 import os
 
 # --- 配置参数 ---
-API_KEY = "sk-4513cc91981a4d3c9ca91473a10131b5"  # 请替换为您的DeepSeek API Key
+API_KEY = "sk-4513******"  # 请替换为您的DeepSeek API Key
 BASE_URL = "https://api.deepseek.com"
 MODEL_NAME = "deepseek-reasoner"  # 或者 "deepseek-reasoner"
 

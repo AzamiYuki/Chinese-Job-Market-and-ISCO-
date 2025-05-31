@@ -5,12 +5,11 @@ import os
 
 # --- 配置参数 ---
 # GEMINI API (via OpenAI-compatible proxy) Configuration
-# 替换为您的Gemini API卡号和指定的端点/模型
-API_KEY = "sk-eUOQ45HD9kB25oU1dJhmRfmjLGi7tYwDFopXmNoGnGv95vuF"  # 您的Gemini API卡号
-BASE_URL = "https://www.chataiapi.com/v1"  # 您提供的反代地址
+API_KEY = "sk-eUO******"  # Gemini API卡号
+BASE_URL = "https://www.chataiapi.com/v1" 
 MODEL_NAME = "gemini-2.0-flash"  # 或 "gemini-2.5-pro-preview-03-25" (确保全称无误)
 
-# 输入文件路径 (请确保与您的文件路径一致)
+=
 INPUT_CSV_FILE = '/Users/wyh/Desktop/统计计算/newjob1.csv'
 # 新的输出文件路径，反映使用的是Gemini API
 OUTPUT_CSV_FILE = '/Users/wyh/Desktop/统计计算/newjob1_isco_4digit_gemini.csv'

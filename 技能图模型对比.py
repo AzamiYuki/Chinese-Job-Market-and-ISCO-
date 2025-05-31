@@ -19,7 +19,7 @@ try:
     print("✓ Node2Vec库可用")
 except ImportError:
     NODE2VEC_AVAILABLE = False
-    print("⚠️ Node2Vec库未安装，请运行: pip install node2vec")
+    print(" Node2Vec库未安装，请运行: pip install node2vec")
 
 # 数值计算
 from sklearn.metrics.pairwise import cosine_similarity
@@ -200,7 +200,7 @@ class PAvsNode2VecComparison:
             q: 进出参数
         """
         if not NODE2VEC_AVAILABLE:
-            print("❌ Node2Vec库不可用，跳过Node2Vec训练")
+            print("Node2Vec库不可用，跳过Node2Vec训练")
             return False
         
         print(f"正在训练Node2Vec模型...")
@@ -241,7 +241,7 @@ class PAvsNode2VecComparison:
             return True
             
         except Exception as e:
-            print(f"❌ Node2Vec训练失败: {e}")
+            print(f"Node2Vec训练失败: {e}")
             return False
     
     def calculate_pa_scores(self, edges: List[Tuple]) -> np.ndarray:
@@ -269,7 +269,7 @@ class PAvsNode2VecComparison:
     def calculate_node2vec_scores(self, edges: List[Tuple]) -> np.ndarray:
         """计算Node2Vec得分（基于嵌入向量相似度）"""
         if not self.node_embeddings:
-            print("❌ Node2Vec嵌入不可用，返回零分数")
+            print("Node2Vec嵌入不可用，返回零分数")
             return np.zeros(len(edges))
         
         scores = []
@@ -370,13 +370,13 @@ class PAvsNode2VecComparison:
         print("算法性能比较表 (类似论文表3)")
         print("="*80)
         
-        print(f"\n📊 测试集统计:")
+        print(f"\n测试集统计:")
         print(f"  总样本数: {results['test_samples']:,}")
         print(f"  正样本数: {results['positive_samples']:,}")
         print(f"  负样本数: {results['negative_samples']:,}")
         
         # 打印详细比较表
-        print(f"\n📈 详细性能比较:")
+        print(f"\n详细性能比较:")
         print("-" * 80)
         print(f"{'算法':<12} {'类别':<8} {'精确率':<10} {'召回率':<10} {'F1分数':<10}")
         print("-" * 80)
@@ -396,7 +396,7 @@ class PAvsNode2VecComparison:
         print("-" * 80)
         
         # 整体性能比较
-        print(f"\n🏆 整体性能比较:")
+        print(f"\n整体性能比较:")
         pa_overall = results['PA']['overall']
         n2v_overall = results['Node2Vec']['overall']
         
@@ -413,7 +413,7 @@ class PAvsNode2VecComparison:
             winner = "PA"
             improvement = ((pa_overall['f1_score'] - n2v_overall['f1_score']) / n2v_overall['f1_score']) * 100
         
-        print(f"\n🎯 结论: {winner} 算法在整体F1分数上表现更好 (提升 {improvement:.1f}%)")
+        print(f"\n结论: {winner} 算法在整体F1分数上表现更好 (提升 {improvement:.1f}%)")
     
     def save_results(self, results: Dict, output_file: str = 'pa_vs_node2vec_results.json'):
         """保存比较结果"""
@@ -432,7 +432,7 @@ def main():
     try:
         pd.read_csv(csv_file, nrows=1)
     except FileNotFoundError:
-        print(f"❌ 文件 {csv_file} 不存在，请先运行技能化简处理")
+        print(f"文件 {csv_file} 不存在，请先运行技能化简处理")
         return
     
     # 初始化比较器
@@ -481,11 +481,11 @@ def main():
     comparator.save_results(results)
     
     print("\n" + "="*80)
-    print("🎉 PA vs Node2Vec 算法比较完成！")
+    print("PA vs Node2Vec 算法比较完成！")
     print("="*80)
     
     if not n2v_success:
-        print("\n⚠️  注意: Node2Vec训练失败，结果可能不准确")
+        print("\n注意: Node2Vec训练失败，结果可能不准确")
         print("   请确保安装: pip install node2vec gensim")
 
 if __name__ == "__main__":

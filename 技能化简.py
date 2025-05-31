@@ -330,16 +330,16 @@ class SkillSimplifier:
         # 找出最重要的技能
         top_skills = sorted(self.final_skills.items(), key=lambda x: x[1], reverse=True)[:20]
         
-        print(f"📊 化简结果分析:")
+        print(f"化简结果分析:")
         print(f"  原始技能数: {original_count:,}")
         print(f"  最终技能数: {final_count:,}")
         print(f"  压缩率: {reduction_rate:.1f}%")
         
-        print(f"\n📈 技能分类分布:")
+        print(f"\n技能分类分布:")
         for category, count in sorted(category_distribution.items(), key=lambda x: x[1], reverse=True):
             print(f"  {category}: {count}个技能")
         
-        print(f"\n🏆 前20个最重要技能:")
+        print(f"\n前20个最重要技能:")
         for i, (skill, freq) in enumerate(top_skills, 1):
             print(f"  {i:2d}. {skill}: {freq:,}次")
         
@@ -478,21 +478,21 @@ def main():
     
     # 生成总结
     print("\n" + "="*80)
-    print("🎉 技能化简处理完成！")
+    print("技能化简处理完成！")
     print("="*80)
     
-    print(f"\n📊 化简效果总结:")
+    print(f"\n化简效果总结:")
     print(f"  原始技能数: {analysis_stats['original_skill_count']:,}")
     print(f"  最终技能数: {final_stats['final_skill_count']:,}")
     print(f"  压缩率: {result_analysis['reduction_rate']:.1f}%")
     print(f"  合并规则数: {merge_stats['total_merge_rules']:,}")
     print(f"  过滤技能数: {filter_stats['filtered_count']:,}")
     
-    print(f"\n📁 输出文件:")
+    print(f"\n输出文件:")
     print(f"  • simplified_jobs_skills.csv - 化简后的技能数据")
     print(f"  • skill_simplification_report.json - 详细化简报告")
     
-    print(f"\n🚀 下一步:")
+    print(f"\n下一步:")
     print(f"  使用 simplified_jobs_skills.csv 进行知识图谱构建")
     print(f"  预期图规模: ~{final_stats['final_skill_count']}个技能节点")
 

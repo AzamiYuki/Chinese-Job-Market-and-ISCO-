@@ -252,7 +252,7 @@ class PALinkPrediction:
         print(f"\n正在保存结果到 {output_file}...")
         
         if not self.pa_results:
-            print("❌ 没有结果可保存")
+            print("没有结果可保存")
             return
         
         # 准备保存的数据
@@ -280,7 +280,7 @@ class PALinkPrediction:
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(results_data, f, ensure_ascii=False, indent=2)
         
-        print(f"✓ 结果已保存到 {output_file}")
+        print(f"结果已保存到 {output_file}")
 
 
 def main():
@@ -320,7 +320,7 @@ def main():
     pa_predictor.save_results()
     
     print("\n" + "="*80)
-    print("🎉 PA链接预测完成！")
+    print("PA链接预测完成！")
     print("="*80)
 
 

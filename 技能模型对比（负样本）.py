@@ -191,10 +191,10 @@ class RatioAnalysisSystem:
                 print(f"✓ Node2Vec模型训练完成")
                 
             except Exception as e:
-                print(f"❌ Node2Vec训练失败: {e}")
+                print(f"Node2Vec训练失败: {e}")
                 self.node2vec_model = None
         else:
-            print(f"⚠️ Node2Vec不可用（库未安装或训练图为空）")
+            print(f"⚠Node2Vec不可用（库未安装或训练图为空）")
             self.node2vec_model = None
     
     def calculate_pa_scores(self, edge_list: List[Tuple]) -> List[float]:
@@ -306,10 +306,10 @@ class RatioAnalysisSystem:
                     self._save_intermediate_results()
                     
             except Exception as e:
-                print(f"❌ 比例 1:{ratio} 评估失败: {e}")
+                print(f"比例 1:{ratio} 评估失败: {e}")
                 continue
         
-        print(f"✓ 比例分析完成，共完成 {len(self.ratio_results)} 个比例的评估")
+        print(f"完成 {len(self.ratio_results)} 个比例的评估")
         return self.ratio_results
     
     def _save_intermediate_results(self):
@@ -322,7 +322,7 @@ class RatioAnalysisSystem:
         print("正在绘制比例对比图...")
         
         if not self.ratio_results:
-            print("❌ 没有分析结果可绘制")
+            print("没有分析结果可绘制")
             return
         
         # 提取数据
@@ -492,17 +492,11 @@ class RatioAnalysisSystem:
             
             df_results.to_csv(f'{output_prefix}_results.csv', index=False, encoding='utf-8-sig')
         
-        print(f"✓ 结果已保存:")
-        print(f"  - {output_prefix}_detailed_results.json: 详细分析报告")
-        print(f"  - {output_prefix}_results.csv: 结果数据表")
-        print(f"  - ratio_comparison.png: 性能对比图")
+
 
 def main():
     """主函数：完整的比例分析流程"""
-    print("=" * 80)
-    print("正负边比例分析与性能对比可视化系统")
-    print("复现论文图4：不同正负样本比例下的算法性能")
-    print("=" * 80)
+
     
     # 初始化系统
     analyzer = RatioAnalysisSystem(
@@ -562,7 +556,7 @@ def main():
     
     # 生成总结
     print("\n" + "="*80)
-    print("🎉 正负边比例分析完成！")
+    print("正负边比例分析完成")
     print("="*80)
     
     print(f"\n📈 关键发现:")
@@ -576,17 +570,7 @@ def main():
             n2v_1_1 = report['n2v_performance']['performance_at_1_1']
             if pa_1_1 and n2v_1_1:
                 print(f"  • 1:1比例性能: PA({pa_1_1:.3f}) vs N2V({n2v_1_1:.3f})")
-    
-    print(f"\n📊 论文复现状态:")
-    print(f"  ✓ 图4数据生成完成")
-    print(f"  ✓ 不同比例下的性能对比完成")
-    print(f"  ✓ 可视化图表生成完成")
-    print(f"  ✓ 验证了'N2V更适合真实世界场景'的结论")
-    
-    print(f"\n💡 使用建议:")
-    print(f"  • 查看 ratio_comparison.png 了解性能趋势")
-    print(f"  • 分析 ratio_analysis_results.csv 获取详细数据")
-    print(f"  • 根据实际应用场景选择合适的算法")
+
 
 if __name__ == "__main__":
     main()

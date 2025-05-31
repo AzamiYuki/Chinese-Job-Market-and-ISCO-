@@ -118,7 +118,7 @@ class SkillJobKnowledgeGraph:
             'density': nx.density(self.full_graph)
         }
         
-        print(f"\n📊 知识图谱构建完成！")
+
         print(f"总节点数: {stats['total_nodes']} ({stats['skill_nodes']}个技能 + {stats['job_nodes']}个职业)")
         print(f"总边数: {stats['total_edges']}")
         print(f"平均度数: {stats['avg_degree']:.2f}")
@@ -170,7 +170,7 @@ class SkillJobKnowledgeGraph:
             weight = self.full_graph[edge[0]][edge[1]]['weight']
             self.training_graph.add_edge(edge[0], edge[1], weight=weight)
         
-        print(f"✓ 训练图构建完成: {self.training_graph.number_of_nodes()} 节点, {self.training_graph.number_of_edges()} 边")
+        print(f"训练图构建完成: {self.training_graph.number_of_nodes()} 节点, {self.training_graph.number_of_edges()} 边")
         
         return {
             'train_positive': len(self.train_positive),
@@ -183,7 +183,7 @@ class SkillJobKnowledgeGraph:
         """
         生成负样本边
         """
-        print(f"\n正在生成负样本边...")
+
         
         # 计算所有可能的技能-职业配对
         total_possible_pairs = len(self.skill_nodes) * len(self.job_nodes)
@@ -337,7 +337,7 @@ class SkillJobKnowledgeGraph:
         test_metrics = calculate_metrics(test_labels, test_predictions)
         
         # 打印结果
-        print(f"\n📊 链接预测性能评估结果:")
+        print(f"\n链接预测性能评估结果:")
         print(f"{'指标':<15} {'训练集':<10} {'验证集':<10} {'测试集':<10}")
         print("-" * 50)
         for metric in ['precision', 'recall', 'f1_score', 'auc_roc', 'auc_pr']:
@@ -381,7 +381,6 @@ class SkillJobKnowledgeGraph:
             'max_closeness': max(closeness.values())
         }
         
-        print(f"📈 图拓扑性质分析:")
         print(f"  连通分量数: {properties['connected_components']}")
         print(f"  最大连通分量大小: {properties['largest_cc_size']} ({properties['largest_cc_ratio']*100:.1f}%)")
         print(f"  平均度数: {properties['average_degree']:.2f} ± {properties['degree_std']:.2f}")
@@ -411,11 +410,11 @@ class SkillJobKnowledgeGraph:
                 job_code = node.replace('JOB_', '')
                 top_jobs.append((job_code, degree))
         
-        print(f"🏆 前{top_k}个最重要的技能（按连接的职业数）:")
+        print(f"前{top_k}个最重要的技能（按连接的职业数）:")
         for i, (skill, degree) in enumerate(top_skills, 1):
             print(f"  {i:2d}. {skill}: 连接{degree}个职业")
         
-        print(f"\n🏆 前{top_k}个最重要的职业（按需要的技能数）:")
+        print(f"\n 前{top_k}个最重要的职业（按需要的技能数）:")
         for i, (job, degree) in enumerate(top_jobs, 1):
             print(f"  {i:2d}. ISCO {job}: 需要{degree}个技能")
         
@@ -529,31 +528,23 @@ def main():
     
     # 生成最终总结报告
     print("\n" + "="*80)
-    print("🎉 知识图谱构建与链接预测完成！")
+
     print("="*80)
     
-    print(f"\n📊 最终统计:")
     print(f"  知识图谱规模: {graph_stats['total_nodes']}个节点, {graph_stats['total_edges']}条边")
     print(f"  技能节点: {graph_stats['skill_nodes']}个")
     print(f"  职业节点: {graph_stats['job_nodes']}个")
     print(f"  图密度: {graph_stats['density']:.6f}")
-    
-    print(f"\n🔬 数据集分割:")
+
     print(f"  训练集: {split_stats['train_positive']}条正样本 + {negative_stats['train_negative']}条负样本")
     print(f"  验证集: {split_stats['val_positive']}条正样本 + {negative_stats['val_negative']}条负样本")
     print(f"  测试集: {split_stats['test_positive']}条正样本 + {negative_stats['test_negative']}条负样本")
-    
-    print(f"\n🎯 链接预测性能 (测试集):")
+
     test_metrics = eval_results['test_metrics']
     print(f"  F1-Score: {test_metrics['f1_score']:.4f}")
     print(f"  AUC-ROC: {test_metrics['auc_roc']:.4f}")
     print(f"  AUC-PR: {test_metrics['auc_pr']:.4f}")
     
-    print(f"\n💡 后续研究方向:")
-    print(f"  - 尝试其他链接预测算法 (Node2Vec, GraphSAGE等)")
-    print(f"  - 分析职业转换路径")
-    print(f"  - 构建技能推荐系统")
-    print(f"  - 进行行业技能画像分析")
 
 if __name__ == "__main__":
     main()

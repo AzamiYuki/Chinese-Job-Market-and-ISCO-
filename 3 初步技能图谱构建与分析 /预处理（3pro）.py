@@ -7,7 +7,7 @@ import re # For parsing REVIEW_NEEDED responses
 import traceback # For detailed error logging
 
 # --- Configuration Parameters ---
-API_KEY = "sk-eUOQ45HD9kB25oU1dJhmRfmjLGi7tYwDFopXmNoGnGv95vuF"
+API_KEY = "sk-eUOQ45HD9kB----"
 BASE_URL = "https://www.chataiapi.com/v1"
 
 # Model names for each pass

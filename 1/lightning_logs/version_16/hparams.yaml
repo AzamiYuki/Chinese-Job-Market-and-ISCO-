@@ -1,0 +1,17 @@
+adam_epsilon: 1.0e-08
+chinese_model_optimization: true
+eval_batch_size: 16
+eval_top_k: 10
+freeze_transformer: false
+hidden_dropout: 0.0
+labels_groups: null
+labels_groups_mapping: null
+labels_paths: null
+language: zh
+learning_rate: 2.0e-05
+model_name_or_path: hfl/chinese-bert-wwm-ext
+output_size: 357
+train_batch_size: 16
+verbose: false
+warmup_steps: 0.1
+weight_decay: 0.01

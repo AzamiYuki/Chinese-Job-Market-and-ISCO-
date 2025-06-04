@@ -42,7 +42,6 @@ class ChineseJobTextProcessor:
         # 初始化jieba
         self._init_jieba()
         
-        print("✅ 中文职业文本处理器初始化完成")
 
     def _load_stopwords(self, path: Optional[str]) -> set:
         """加载停用词"""
@@ -267,7 +266,7 @@ class ChineseJobDataAugmenter:
             'noise_injection': 0.1         # 噪声注入概率
         }
         
-        print("✅ 中文职业数据增强器初始化完成")
+
 
     def synonym_replacement(self, text: str, replacement_rate: float = 0.15) -> str:
         """同义词替换增强"""
@@ -477,7 +476,6 @@ class ImbalancedDataHandler:
                             balanced_labels.append(label)
                             augmented_count += 1
         
-        print(f"✅ 数据平衡完成:")
         print(f"   原始样本: {len(texts)}")
         print(f"   平衡后样本: {len(balanced_texts)}")
         
@@ -498,8 +496,7 @@ class EnhancedJobDataProcessor:
         )
         self.augmenter = ChineseJobDataAugmenter(self.text_processor)
         self.balance_handler = ImbalancedDataHandler()
-        
-        print("🚀 增强版职业数据处理器初始化完成")
+
 
     def safe_train_test_split(self, df, test_size=0.2, random_state=42):
         """安全的训练测试集划分，处理单样本类别"""
@@ -572,7 +569,6 @@ class EnhancedJobDataProcessor:
                         target_samples_per_class: int = 10) -> Tuple[List[str], List[str], Dict]:
         """处理CSV数据"""
         
-        print(f"📊 开始处理CSV数据: {csv_path}")
         
         # 加载数据
         try:
@@ -632,7 +628,7 @@ class EnhancedJobDataProcessor:
             )
             
         elif enable_augmentation:
-            print("🎯 开始数据增强...")
+
             augmented_texts = []
             augmented_labels = []
             
@@ -704,8 +700,7 @@ class EnhancedJobDataProcessor:
         with open(output_path / 'processed_labels.txt', 'w', encoding='utf-8') as f:
             for label in labels:
                 f.write(label + '\n')
-        
-        print(f"✅ 处理后数据已保存到: {output_dir}")
+
 
 
 # 使用示例和测试
@@ -736,11 +731,10 @@ if __name__ == "__main__":
         
         # 保存处理后的数据
         processor.save_processed_data(texts, labels, "processed_job_data")
-        
-        print("\n🎉 数据增强与预处理完成！")
+
         
     except FileNotFoundError:
-        print(f"❌ 找不到数据文件: {csv_path}")
+        print(f"找不到数据文件: {csv_path}")
         print("请确认文件路径正确，或使用示例数据测试功能")
         
         # 创建示例数据进行测试
@@ -751,7 +745,7 @@ if __name__ == "__main__":
         ]
         sample_labels = ["1212", "1111", "1212"]
         
-        print("\n🧪 使用示例数据测试增强功能...")
+        print("\n使用示例数据测试增强功能...")
         
         # 测试单个文本增强
         augmented = processor.augmenter.augment_single_text(sample_texts[0], num_augmented=3)
